@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    box-sizing: border-box;
+}
+body{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #23242a;
+}
+
+.genel {
+    position: relative;
+    display: flex;
+    width: 400px;
+    height: 500px;
+    border-radius: 10px;
+    background: #fff;
+    padding: 40px;
+    overflow: hidden; /*the animation will only be around the login*/
+
+}
+
+/* animation before genel(animation around login) */
+.genel::before { 
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 400px;
+    height: 500px;
+    background: linear-gradient(0deg,transparent,transparent,
+    #9945ff,#45f3ff,#9945ff);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+/* animation after genel(animation around login) */
+.genel::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 400px;
+    height: 500px;
+    background: linear-gradient(0deg,transparent,transparent,
+    #9945ff,#45f3ff,#45f3ff);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s ;
+}
+
+/* for the animation to move */
+@keyframes animate{
+    0% {
+transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* form css code */
+.genel form {
+    position: absolute;
+    inset: 4px;
+    display: flex;
+    flex-direction: column;
+    background: #222;
+    padding: 50px 40px;
+    border-radius: 8px;
+    z-index: 2;
+
+}
+h2 {
+    font-weight: 500;
+    color: #9945ff;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+/* username, password part */
+.inputbox {
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+}
+/* username, password input part */
+.inputbox input{
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    color: #fcfcfd;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+
+}
+.inputbox span {
+    position: absolute;
+    left: 0;
+    padding: 20px 10px 10px;
+    pointer-events: none; 
+    color: #fff;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+} 
+
+.inputbox input:valid ~ span,
+.inputbox input:focus ~ span {
+
+    color: #fff;
+    font-size: 0.75em;
+    transform: translateY(-34px);
+
+}
+.inputbox i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #9945ff;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+/* When we click on the username or password the username and password text moves up */
+
+.inputbox input:valid ~ i,
+.inputbox input:focus ~ i {
+    height: 44px;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+}
+.links a {
+    margin: 10px 0;
+    text-decoration: none;
+}
+.links a:hover {
+    color: #fff;
+}
+
+/* login button */
+
+form input[type="submit"] {
+    border-color: #fff;
+    outline: none;
+    padding: 9px 25px;
+    background: #222;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 4px;
+    font-weight: 600;
+    width: 350px;
+    margin-top: 60px;
+    margin-left: -20px;
+    color: #9945ff;
+}
+form input[type="submit"]:hover {
+    color: #fff;
+    background: #9945ff;
+}
+
+ 
